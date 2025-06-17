@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/1055/1055646.png">
+  <!-- Smooth Scroll -->
+  <script src="assets/js/smooth-scroll.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/controllers.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</head>
+<style>
+  body::-webkit-scrollbar
+  {
+    width: 1px;
+  }
+</style>
+<body ng-controller="MainController" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70" tabindex="0">
+  <div id="loader"></div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark shadow">
+    <div class="container">
+      <a class="navbar-brand" href="#home"><img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" class="navbar-toggler-icon me-3">{{ company }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse text-center" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section d-flex align-items-center justify-content-center text-white text-center" style="min-height: 100vh; padding: 100px 0;">
+  <div class="container" 
+       data-aos="fade-up" 
+       data-aos-anchor-placement="top-bottom" 
+       data-aos-offset="100" 
+       data-aos-mirror="true" 
+       data-aos-once="false">
+       
+    <h1 class="display-4" data-aos-easing="ease-in-out">
+      Welcome to {{ company }}
+    </h1>
+    <p class="lead mt-3" data-aos="zoom-in" data-aos-easing="ease-in-out"
+>{{ tagline }}</p>
+    <a href="#about" class="btn btn-light btn-lg mt-3" data-aos="zomm-in">Explore More</a>
+  </div>
+</section>
+
+
+
+  <!-- About -->
+  <section id="about" class="py-5 bg-light text-center">
+  <div class="container" data-aos="fade-up">
+    <h2 class="mb-4">About Us</h2>
+    <p class="lead text-muted">{{ about }}</p>
+  </div>
+</section>
+
+
+
+  <!-- Services -->
+  <section id="services" class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-4" data-aos="fade-up">Our Services</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+        <i class="fas fa-laptop-code fa-3x text-primary mb-3"></i>
+        <h5>Web Development</h5>
+        <p>Clean, modern websites that perform across all devices.</p>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+        <i class="fas fa-bullhorn fa-3x text-success mb-3"></i>
+        <h5>Marketing Strategy</h5>
+        <p>Grow your business with our result-driven campaigns.</p>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+        <i class="fas fa-mobile-alt fa-3x text-warning mb-3"></i>
+        <h5>App Development</h5>
+        <p>Innovative Android & iOS apps for your next big idea.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Products -->
+<section id="products" class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="mb-5" data-aos="fade-up">Our Products</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4" ng-repeat="product in products" data-aos="zoom-in" data-aos-delay="{{$index * 100}}">
+        <div class="card h-100 shadow border-0">
+          <img ng-src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 220px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="fw-bold text-primary" ng-if="product.price">₹ {{ product.price | number:0 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-white text-center" id="why">
+  <div class="container">
+    <h2 class="mb-4" data-aos="fade-right">Why Choose Us</h2>
+    <div class="row">
+      <div class="col-md-4" ng-repeat="reason in reasons" data-aos="flip-left">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ reason.title }}</h5>
+            <p class="card-text">{{ reason.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="py-5 bg-white text-center">
+  <div class="container">
+    <h2 class="mb-4" data-aos="fade-up">Meet Our Team</h2>
+    <div class="row">
+      <div class="col-md-3 mb-4" ng-repeat="member in team" data-aos="zoom-in" data-aos-delay="{{$index * 100}}">
+        <div class="card border-0">
+          <img class="card-img-top rounded-circle p-3" ng-src="{{ member.photo }}" alt="{{ member.name }}">
+          <div class="card-body">
+            <h5>{{ member.name }}</h5>
+            <p class="text-muted">{{ member.role }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-light text-center" id="faq">
+  <div class="container" data-aos="fade-up">
+    <h2 class="mb-4">FAQs</h2>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item" ng-repeat="q in faqs" data-aos="fade-up">
+        <h2 class="accordion-header" id="heading{{$index}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapse{{$index}}">
+            {{ q.question }}
+          </button>
+        </h2>
+        <div id="collapse{{$index}}" class="accordion-collapse collapse"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">{{ q.answer }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter" class="py-5 bg-dark text-white text-center">
+  <div class="container" data-aos="fade-up">
+    <h2 class="mb-3">Subscribe to Our Newsletter</h2>
+    <form class="row justify-content-center" ng-submit="subscribe()" name="newsletterForm">
+      <div class="col-md-4">
+        <input type="email" class="form-control" placeholder="Enter your email" ng-model="subscriber.email" required>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100" type="submit">Subscribe</button>
+      </div>
+    </form>
+    <div class="alert alert-success mt-3 w-50 mx-auto" ng-show="subscriber.submitted">
+      Thanks for subscribing!
+    </div>
+  </div>
+</section>
+
+  <!-- Testimonials -->
+<section id="testimonials" class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4" data-aos="fade-up">What Our Clients Say</h2>
+    <div class="row">
+      <div class="col-md-4" ng-repeat="t in testimonials" data-aos="{{$index % 2 == 0 ? 'fade-right' : 'fade-left'}}">
+        <div class="card h-100 shadow">
+          <div class="card-body">
+            <blockquote class="blockquote">
+              <p>"{{ t.feedback }}"</p>
+              <footer class="blockquote-footer">{{ t.name }}</footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Contact -->
+ <section id="contact" class="py-5 bg-white text-center">
+  <div class="container" data-aos="fade-up">
+    <h2 class="mb-4">Contact Us</h2>
+    <form name="contactForm" ng-submit="submitContact()" novalidate>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <input type="text" class="form-control mb-3" placeholder="Name" ng-model="contact.name" required>
+          <input type="email" class="form-control mb-3" placeholder="Email" ng-model="contact.email" required>
+          <textarea class="form-control mb-3" placeholder="Your Message" rows="4" ng-model="contact.message" required></textarea>
+          <button class="btn btn-primary btn-block" type="submit">Send Message</button>
+
+          <div class="alert alert-success mt-3 animate__animated animate__fadeIn" ng-show="contactSubmitted">
+            Thank you for reaching out, {{ contact.name }}!
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; {{ year }} {{ company }}. All rights reserved.</p>
+    <p>123 Innovation Road, Bengaluru, India</p>
+  </div>
+</footer>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: false,
+    mirror:false,
+      });
+       // Automatically hide loader after page is fully loaded
+    window.addEventListener("load", function () {
+      document.body.classList.add('loaded');
+    });
+</script>
+</body>
+</html>
