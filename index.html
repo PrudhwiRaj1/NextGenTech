@@ -25,6 +25,10 @@
   {
     width: 1px;
   }
+  .resize-none
+  {
+    resize:none;
+  }
 </style>
 <body ng-controller="MainController" data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70" tabindex="0">
   <div id="loader"></div>
@@ -221,7 +225,7 @@
         <div class="col-md-6">
           <input type="text" class="form-control mb-3" placeholder="Name" ng-model="contact.name" required>
           <input type="email" class="form-control mb-3" placeholder="Email" ng-model="contact.email" required>
-          <textarea class="form-control mb-3" placeholder="Your Message" rows="4" ng-model="contact.message" required></textarea>
+          <textarea class="form-control resize-none mb-3" placeholder="Your Message" rows="4" ng-model="contact.message" required></textarea>
           <button class="btn btn-primary btn-block" type="submit">Send Message</button>
 
           <div class="alert alert-success mt-3 animate__animated animate__fadeIn" ng-show="contactSubmitted">
