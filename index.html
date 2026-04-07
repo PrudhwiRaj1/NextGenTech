@@ -200,7 +200,7 @@
   <div class="container">
     <h2 class="mb-4" data-aos="fade-up">What Our Clients Say</h2>
     <div class="row">
-      <div class="col-md-4" ng-repeat="t in testimonials" data-aos="{{$index % 2 == 0 ? 'fade-right' : 'fade-left'}}">
+      <div class="col-md-4" ng-repeat="t in testimonials" data-aos="{{$index % 2 != 0 ? 'fade-up' : 'fade-down'}}">
         <div class="card h-100 shadow">
           <div class="card-body">
             <blockquote class="blockquote">
