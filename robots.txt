@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prudhwiraj1.github.io/NextGenTech/sitemap.xml
